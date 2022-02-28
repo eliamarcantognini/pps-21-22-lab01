@@ -27,4 +27,20 @@ public class SimpleBankAccountWithAtmTest extends SimpleBankAccountTest{
         bankAccountWithAtm.depositWithAtm(2, 50);
         assertEquals(99, bankAccountWithAtm.getBalance());
     }
+
+    @Test
+    void testWithdrawWithAtm() {
+        bankAccountWithAtm.depositWithAtm(accountHolder.getId(), 100);
+        bankAccountWithAtm.withdrawWithAtm(accountHolder.getId(), 70);
+        assertEquals(28, bankAccountWithAtm.getBalance());
+    }
+
+    @Test
+    void testWrongWithdrawWithAtm() {
+        bankAccountWithAtm.depositWithAtm(accountHolder.getId(), 100);
+        bankAccountWithAtm.withdrawWithAtm(accountHolder.getId(), 70);
+        bankAccountWithAtm.withdrawWithAtm(2, 50);
+        assertEquals(28, bankAccountWithAtm.getBalance());
+
+    }
 }

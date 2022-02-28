@@ -10,7 +10,15 @@ public class SimpleBankAccountWithAtm extends SimpleBankAccount implements BankA
 
     public void depositWithAtm(int userID, double amount) {
         if (userID == holder.getId()) {
-            this.balance += amount - ATM_FEE;
+            this.balance += (amount - ATM_FEE);
         }
     }
+
+    @Override
+    public void withdrawWithAtm(int userID, double amount) {
+        if (userID == holder.getId() && this.balance >= (amount + ATM_FEE)) {
+            this.balance -= (amount + ATM_FEE);
+        }
+    }
+
 }

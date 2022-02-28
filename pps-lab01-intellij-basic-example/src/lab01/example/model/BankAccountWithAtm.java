@@ -10,4 +10,6 @@ public interface BankAccountWithAtm extends BankAccount{
      * @param amount the amount of the deposit
      */
     void depositWithAtm(int userID, double amount);
+
+    void withdrawWithAtm(int UserID, double amount);
 }
