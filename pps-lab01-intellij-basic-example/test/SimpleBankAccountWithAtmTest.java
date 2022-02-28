@@ -18,6 +18,13 @@ public class SimpleBankAccountWithAtmTest extends SimpleBankAccountTest{
     @Test
     void testDepositWithAtm() {
         bankAccountWithAtm.depositWithAtm(accountHolder.getId(), 100);
-        assertEquals(99, bankAccount.getBalance());
+        assertEquals(99, bankAccountWithAtm.getBalance());
+    }
+
+    @Test
+    void testWrongDepositWithAtm() {
+        bankAccountWithAtm.depositWithAtm(accountHolder.getId(), 100);
+        bankAccountWithAtm.depositWithAtm(2, 50);
+        assertEquals(99, bankAccountWithAtm.getBalance());
     }
 }
