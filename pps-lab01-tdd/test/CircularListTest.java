@@ -3,6 +3,8 @@ import lab01.tdd.SimpleCircularList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -50,6 +52,13 @@ public class CircularListTest {
         assertEquals(3, circularList.previous().get());
         assertEquals(2, circularList.previous().get());
         assertEquals(1, circularList.previous().get());
+    }
+
+    @Test
+    void testPreviousNextBehaviour(){
+        addAll(1, 2, 3, 4);
+        assertEquals(1, circularList.previous().get());
+        assertEquals(4, circularList.next().get());
     }
 
     @Test

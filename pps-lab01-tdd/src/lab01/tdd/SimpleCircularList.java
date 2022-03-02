@@ -7,12 +7,13 @@ import java.util.Optional;
 
 public class SimpleCircularList implements CircularList {
 
+    private static final int START_INDEX = 0;
     private final List<Integer> elements;
     private int index;
 
     public SimpleCircularList() {
         this.elements = new ArrayList<>();
-        this.index = 0;
+        this.index = START_INDEX;
     }
 
     @Override
@@ -52,24 +53,28 @@ public class SimpleCircularList implements CircularList {
 
     @Override
     public void reset() {
-        this.index = 0;
+        this.index = START_INDEX;
     }
 
     @Override
     public Optional<Integer> next(SelectStrategy strategy) {
-        return Optional.empty();
+        Optional<Integer> element = Optional.empty();
+        if (strategy.apply(this.elements.get(this.index))) {
+            element = Optional.of(this.elements.get(this.index));
+        }
+        return element;
     }
 
     private void increaseIndex(){
         if (this.index == this.size() - 1) {
-            this.index = 0;
+            this.index = START_INDEX;
         } else {
             this.index++;
         }
     }
 
     private void decreaseIndex(){
-        if (this.index == 0) {
+        if (this.index == START_INDEX) {
             this.index = this.size() - 1;
         } else {
             this.index--;
