@@ -1,5 +1,6 @@
 package lab01.tdd;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,12 @@ public class SimpleCircularList implements CircularList {
 
     @Override
     public Optional<Integer> next() {
-        return Optional.empty();
+        Optional<Integer> element = Optional.empty();
+        if (!this.isEmpty()) {
+            element = Optional.of(elements.get(index));
+            increaseIndex();
+        }
+        return element;
     }
 
     @Override
@@ -48,4 +54,13 @@ public class SimpleCircularList implements CircularList {
     public Optional<Integer> next(SelectStrategy strategy) {
         return Optional.empty();
     }
+
+    private void increaseIndex(){
+        if (this.index == this.size() - 1) {
+            this.index = 0;
+        } else {
+            this.index++;
+        }
+    }
+
 }
