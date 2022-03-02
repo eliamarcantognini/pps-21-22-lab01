@@ -4,6 +4,7 @@ import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 public class SimpleCircularList implements CircularList {
 
@@ -58,11 +59,14 @@ public class SimpleCircularList implements CircularList {
 
     @Override
     public Optional<Integer> next(SelectStrategy strategy) {
-        Optional<Integer> element = Optional.empty();
-        if (strategy.apply(this.elements.get(this.index))) {
-            element = Optional.of(this.elements.get(this.index));
+        for(int i = 0; i < this.size(); i++) {
+            Optional<Integer> element = this.next();
+            if (element.isPresent() && strategy.apply(element.get())) {
+                return element;
+            }
         }
-        return element;
+
+        return Optional.empty();
     }
 
     private void increaseIndex(){
