@@ -36,9 +36,7 @@ public class CircularListTest {
 
     @Test
     void testNext(){
-        circularList.add(1);
-        circularList.add(2);
-        circularList.add(3);
+        this.addAll(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
         assertEquals(3, circularList.next().get());
@@ -47,9 +45,7 @@ public class CircularListTest {
 
     @Test
     void testPrevious(){
-        circularList.add(1);
-        circularList.add(2);
-        circularList.add(3);
+        addAll(1, 2, 3);
         assertEquals(1, circularList.previous().get());
         assertEquals(3, circularList.previous().get());
         assertEquals(2, circularList.previous().get());
@@ -58,12 +54,16 @@ public class CircularListTest {
 
     @Test
     void testReset(){
-        circularList.add(1);
-        circularList.add(2);
-        circularList.add(3);
+        this.addAll(1, 2, 3);
         circularList.next();
         assertEquals(2, circularList.next().get());
         circularList.reset();
         assertEquals(1, circularList.next().get());
+    }
+
+    private void addAll(Integer... elements){
+        for (int e : elements) {
+            circularList.add(e);
+        }
     }
 }
