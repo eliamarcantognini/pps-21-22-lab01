@@ -1,9 +1,9 @@
 import lab01.tdd.CircularList;
 import lab01.tdd.SimpleCircularList;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The test suite for testing the CircularList implementation
@@ -16,6 +16,13 @@ public class CircularListTest {
     void beforeEach(){
         circularList = new SimpleCircularList();
     }
+
+    @Test
+    void testSize(){
+        assertEquals(0, circularList.size());
+    }
+
+
 
 
 
