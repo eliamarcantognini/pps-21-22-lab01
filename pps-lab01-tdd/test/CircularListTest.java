@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CircularListTest {
 
     private CircularList circularList;
-    private SelectStrategyFactory factory = new SimpleSelectStrategyFactory();
+    private final SelectStrategyFactory factory = new SimpleSelectStrategyFactory();
 
     @BeforeEach
     void beforeEach(){
@@ -40,36 +40,36 @@ public class CircularListTest {
     void testNext(){
         assertEquals(Optional.empty(), circularList.next());
         this.addAll(1, 2, 3);
-        assertEquals(1, circularList.next().get());
-        assertEquals(2, circularList.next().get());
-        assertEquals(3, circularList.next().get());
-        assertEquals(1, circularList.next().get());
+        assertEquals(Optional.of(1), circularList.next());
+        assertEquals(Optional.of(2), circularList.next());
+        assertEquals(Optional.of(3), circularList.next());
+        assertEquals(Optional.of(1), circularList.next());
     }
 
     @Test
     void testPrevious(){
         assertEquals(Optional.empty(), circularList.previous());
         addAll(1, 2, 3);
-        assertEquals(1, circularList.previous().get());
-        assertEquals(3, circularList.previous().get());
-        assertEquals(2, circularList.previous().get());
-        assertEquals(1, circularList.previous().get());
+        assertEquals(Optional.of(1), circularList.previous());
+        assertEquals(Optional.of(3), circularList.previous());
+        assertEquals(Optional.of(2), circularList.previous());
+        assertEquals(Optional.of(1), circularList.previous());
     }
 
     @Test
     void testPreviousNextBehaviour(){
         addAll(1, 2, 3, 4);
-        assertEquals(1, circularList.previous().get());
-        assertEquals(4, circularList.next().get());
+        assertEquals(Optional.of(1), circularList.previous());
+        assertEquals(Optional.of(4), circularList.next());
     }
 
     @Test
     void testReset(){
         this.addAll(1, 2, 3);
         circularList.next();
-        assertEquals(2, circularList.next().get());
+        assertEquals(Optional.of(2), circularList.next());
         circularList.reset();
-        assertEquals(1, circularList.next().get());
+        assertEquals(Optional.of(1), circularList.next());
     }
 
     @Test
