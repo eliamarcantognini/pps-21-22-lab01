@@ -22,6 +22,12 @@ public class CircularListTest {
         assertEquals(0, circularList.size());
     }
 
+    @Test
+    void testAdd(){
+        circularList.add(1);
+        assertEquals(1, circularList.size());
+    }
+
 
 
 
