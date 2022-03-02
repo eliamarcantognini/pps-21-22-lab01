@@ -34,7 +34,7 @@ public class SimpleCircularList implements CircularList {
     public Optional<Integer> next() {
         Optional<Integer> element = Optional.empty();
         if (!this.isEmpty()) {
-            element = Optional.of(elements.get(index));
+            element = Optional.of(elements.get(this.index));
             increaseIndex();
         }
         return element;
@@ -44,7 +44,7 @@ public class SimpleCircularList implements CircularList {
     public Optional<Integer> previous() {
         Optional<Integer> element = Optional.empty();
         if (!this.isEmpty()) {
-            element = Optional.of(elements.get(index));
+            element = Optional.of(elements.get(this.index));
             decreaseIndex();
         }
         return element;
@@ -52,7 +52,7 @@ public class SimpleCircularList implements CircularList {
 
     @Override
     public void reset() {
-
+        this.index = 0;
     }
 
     @Override

@@ -51,13 +51,19 @@ public class CircularListTest {
         circularList.add(2);
         circularList.add(3);
         assertEquals(1, circularList.previous().get());
-        assertEquals(2, circularList.previous().get());
         assertEquals(3, circularList.previous().get());
+        assertEquals(2, circularList.previous().get());
         assertEquals(1, circularList.previous().get());
     }
 
-
-
-
-
+    @Test
+    void testReset(){
+        circularList.add(1);
+        circularList.add(2);
+        circularList.add(3);
+        circularList.next();
+        assertEquals(2, circularList.next().get());
+        circularList.reset();
+        assertEquals(1, circularList.next().get());
+    }
 }
