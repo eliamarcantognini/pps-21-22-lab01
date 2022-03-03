@@ -20,7 +20,7 @@ public class SimpleBankAccount implements BankAccount {
     }
 
     @Override
-    public AccountHolder getHolder(){
+    public AccountHolder getHolder() {
         return this.holder;
     }
 
@@ -43,7 +43,7 @@ public class SimpleBankAccount implements BankAccount {
         }
     }
 
-    protected boolean isWithdrawAllowed(final double amount){
+    protected boolean isWithdrawAllowed(final double amount) {
         return this.balance >= amount;
     }
 
