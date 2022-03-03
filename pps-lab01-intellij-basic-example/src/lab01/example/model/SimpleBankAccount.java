@@ -7,13 +7,18 @@ package lab01.example.model;
  */
 public class SimpleBankAccount implements BankAccount {
 
-    protected double balance;
-    protected final AccountHolder holder;
+    private double balance;
+    private final AccountHolder holder;
 
     public SimpleBankAccount(final AccountHolder holder, final double balance) {
         this.holder = holder;
         this.balance = balance;
     }
+
+    protected void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     @Override
     public AccountHolder getHolder(){
         return this.holder;

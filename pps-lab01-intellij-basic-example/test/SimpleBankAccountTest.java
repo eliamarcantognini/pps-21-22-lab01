@@ -10,8 +10,24 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class SimpleBankAccountTest {
 
-    protected AccountHolder accountHolder;
-    protected BankAccount bankAccount;
+    private AccountHolder accountHolder;
+    private BankAccount bankAccount;
+
+    protected AccountHolder getAccountHolder() {
+        return accountHolder;
+    }
+
+    protected BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    protected void setAccountHolder(AccountHolder accountHolder) {
+        this.accountHolder = accountHolder;
+    }
+
+    protected void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
 
     @BeforeEach
     void beforeEach(){
