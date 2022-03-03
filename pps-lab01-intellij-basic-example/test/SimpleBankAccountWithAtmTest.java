@@ -1,15 +1,18 @@
-import lab01.example.model.*;
+import lab01.example.model.AccountHolder;
+import lab01.example.model.BankAccountWithAtm;
+import lab01.example.model.SimpleBankAccountWithAtm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SimpleBankAccountWithAtmTest extends SimpleBankAccountTest{
+public class SimpleBankAccountWithAtmTest extends SimpleBankAccountTest {
 
     private BankAccountWithAtm bankAccountWithAtm;
+
     @BeforeEach
     @Override
-    void beforeEach(){
+    void beforeEach() {
         setAccountHolder(new AccountHolder("Mario", "Rossi", 1));
         bankAccountWithAtm = new SimpleBankAccountWithAtm(getAccountHolder(), 0);
         setBankAccount(bankAccountWithAtm);
@@ -41,6 +44,5 @@ public class SimpleBankAccountWithAtmTest extends SimpleBankAccountTest{
         bankAccountWithAtm.withdrawWithAtm(getAccountHolder().getId(), 70);
         bankAccountWithAtm.withdrawWithAtm(2, 50);
         assertEquals(28, bankAccountWithAtm.getBalance());
-
     }
 }
